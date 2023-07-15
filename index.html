@@ -25,26 +25,29 @@
         </div>
         </div>
 
-        <div class="cart-item" x-show="cartTotal">
+        <div class="cart-item" x-show="cartTotal > 0">
           <h2> Your cart</h2>
           <div class="message">message here</div>
+          <div class="cart-item">
+          <table>
           <tr>
             <th>Flavour</th>
             <th>Size</th>
             <th>Price</th>
             <th>Qty</th>
             <th>Total</th>
+          </tr>
           
-            <div class="cart-item">
+            
             <template x-for="pizza in cartPizzas">
               <tr>
                 
-                  <td x-text="pizza.flavour"></td>
-                  <td x-text="pizza.size"></tdx-text></td>
-                  <td x-text="pizza.price"></td>
+                  <td x-text="pizza.flavour" ></td>
+                  <td x-text="pizza.size" ></tdx-text></td>
+                  <td x-text="pizza.price" ></td>
                   <td>
                     <button x-on:click="addPizzaToCart(pizza.id)">+</button>
-                    x<span x-text="pizza.qty"></span>
+                    x<span x-text="pizza.qty" ></span>
                     <button x-on:click="removePizzaFromCart(pizza.id)">-</button>
                   </td>
                   <td x-text="pizza.total"></td>
@@ -52,20 +55,25 @@
               </tr>
             </template>
             </div>
-
-          </tr>
+           
+          
             <tr>
               <td colspan="3">Total</td>
-              <td colspan="2">R<span x-text="cartTotal"></span></td>
+              <td colspan="2" style="text-align: right;">R<span x-text="cartTotal"></span></td>
               </td>
             </tr>
+
+          <tr>
             <td colspan="3">Pay Now</td>
             <td>
               <input x-model="paymentAmount" type="text">
             </td>
-            <td><button x-on:click="payForCart()">Pay !</button></td>
+            <td><button x-on:click="payForCart">Pay !</button></td>
+          </tr> 
+        </table>
         </div>
     </div>
+  
 
     <div class = "pizzas">
       <h2>Pizzas</h2>
