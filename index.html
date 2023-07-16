@@ -17,17 +17,19 @@
         <div class="cart">
           <div>
             <div>
-              Username: <span x-text="username"></span>
+              Username: <input type="text" x-model="username">
+              <button x-on:click="login"  >Login</button>
+              <button x:onclick="logout" x-show="username && cartId">Logout</button> 
             </div>
           </div>
-        <div>
+        <div x-show="cartId">
         Cart Code: <span x-text="cartId"></span>
         </div>
         </div>
 
         <div class="cart-item" x-show="cartTotal > 0">
           <h2> Your cart</h2>
-          <div class="message">message here</div>
+          <div class="message" x-text="message">message here</div>
           <div class="cart-item">
           <table>
           <tr>
@@ -68,17 +70,18 @@
             <td>
               <input x-model="paymentAmount" type="text">
             </td>
-            <td><button x-on:click="payForCart">Pay !</button></td>
+            <td><button x-on:click="payForCart()">Pay !</button></td>
           </tr> 
         </table>
         </div>
     </div>
   
 
-    <div class = "pizzas">
+    <div class = "pizzas-container" x-show="username && cartId">
       <h2>Pizzas</h2>
       <template x-for="pizza in pizzas">
-        <div class="pizza">
+        <div class="pizza-container">
+          
             <h5 x-text="pizza.flavour" ></h5>
             <span x-text="pizza.size"></span>@
             <strong>
@@ -86,8 +89,10 @@
             </strong>
             <div>
               <button class="btn" x-on:click="addPizzaToCart(pizza.id)">Add to cart </button>
+            
             </div>
 
+          
         </div>
       </template>
     

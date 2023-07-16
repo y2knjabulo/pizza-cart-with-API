@@ -1,15 +1,20 @@
-.pizza {
-    margin: 8em; 
-    padding: 3em; 
+.pizza-container {
+    margin: 0.5em; 
+    padding: 1em; 
     border: 1px solid #268f0c;
     border-radius:2.5em;
     margin-bottom:1.5em;
-    background-color: rgb(90, 7, 86);
-    text-shadow: 2px 2px 4px rgb(0, 0, 0);
-    font-size:2rem; 
-    color: rgb(100, 104, 100);
-    display:inline-block;
+    background-color:#7e4d4d;
+    font-size:2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(117, 0, 98);
+    
+    
 }
+
+
+    
+
 
 body{
     background-image:url("images/pizza picture.png");
@@ -24,9 +29,9 @@ body{
 
 .container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: auto;
     padding: 2em;
-    
+   
 }
 
 h2 {
@@ -40,6 +45,7 @@ h2 {
     padding: 1em;
     margin-bottom: 1em;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
 }
 
 .cart-item h5 {
@@ -52,8 +58,28 @@ h2 {
     color: #666;
 }*/
 
-/*.cart-item {
-    width: 40px;
-    margin-right: 5px;
-    text-align: center;
-}*
+.cart {
+    border-radius: 10px;
+    padding: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #7e4d4d;
+}
+.pizzas-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+  }
+
+  @media (max-width: 768px) {
+    .pizzas-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .pizzas-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
