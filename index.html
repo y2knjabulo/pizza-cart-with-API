@@ -19,7 +19,7 @@
             <div>
               Username: <input type="text" x-model="username">
               <button x-on:click="login"  >Login</button>
-              <button x:onclick="logout" x-show="username && cartId">Logout</button> 
+              <button x-on:click="logout" x-show="username && cartId">Logout</button> 
             </div>
           </div>
         <div x-show="cartId">
@@ -81,7 +81,7 @@
       <h2>Pizzas</h2>
       <template x-for="pizza in pizzas">
         <div class="pizza-container">
-          
+          <td><img src= "images/p2.png"></td>
             <h5 x-text="pizza.flavour" ></h5>
             <span x-text="pizza.size"></span>@
             <strong>

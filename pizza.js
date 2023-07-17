@@ -28,23 +28,23 @@ document.addEventListener("alpine:init", () => {
                
             },
 
-            createCart() {
-
-                if (!this.username) {
-                    //this.cartId = "No username to create cart for"
-                    return Promise.resolve(); 
-                }
+             createCart() {
                 const cartId = localStorage["cartId"];
 
+                if (!this.username) {
+                //this.cartId = "No username to create cart for"
+                // return Promise.resolve(); 
+               }
+              
                 if (cartId) {
                     this.cartId = cartId;
-                    return Promise.resolve();
+                    //return Promise.resolve();
                 } else {
                     const createCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/create?username=${this.username}`
                     return axios.get(createCartURL)
                                 .then(result => {
                                 this.cartId = result.data.cart_code;
-                                localStorage["cartId"] = this.cartId;
+                                   localStorage["cartId"] = this.cartId;
 
                         });
 
@@ -95,7 +95,7 @@ document.addEventListener("alpine:init", () => {
 
             showCartData() {
                 this.getCart().then(result => {
-                    console.log(result);
+                   // console.log(result);
                     const cartData = result.data;
                     this.cartPizzas = cartData.pizzas;
                     this.cartTotal = cartData.total.toFixed(2);
@@ -147,7 +147,8 @@ document.addEventListener("alpine:init", () => {
                         this.showCartData();
                     })
             },
-
+             
+            
             payForCart() {
                 //alert("Pay Now : " + this.paymentAmount);
                 this
@@ -166,7 +167,7 @@ document.addEventListener("alpine:init", () => {
                                 this.paymentAmount = 0;
                                 localStorage["cartId"] = "";
                                 this.createCart();
-                            }, 3000)
+                            }, 3000);
 
                         }
                     })
