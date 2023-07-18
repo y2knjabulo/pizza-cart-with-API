@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizza Cart</title>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="pizza.js"></script>
-    <link rel="stylesheet" href="style.css">
-    
-    
-</head>
-<body x-data="pizzaCart">
-    <div class="container">
-        <h1 x-text="title"></h1>
-        <div class="cart">
-          <div>
-            <div>
-              Username: <input type="text" x-model="username">
-              <button x-on:click="login"  >Login</button>
-              <button x-on:click="logout" x-show="username && cartId">Logout</button> 
-            </div>
-          </div>
-        <div x-show="cartId">
-        Cart Code: <span x-text="cartId"></span>
-        </div>
-        </div>
 
-        <div class="cart-item" x-show="cartTotal > 0">
-          <h2> Your cart</h2>
-          <div class="message" x-text="message">message here</div>
-          <div class="cart-item">
-          <table>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Cart</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="pizza.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body x-data="pizzaCart">
+  <div class="container">
+    <h1 x-text="title"></h1>
+    <div class="cart">
+      <div>
+        <div>
+          Username: <input type="text" x-model="username">
+          <button x-on:click="login">Login</button>
+          <button x-on:click="logout" x-show="username && cartId">Logout</button>
+        </div>
+      </div>
+      <div x-show="cartId">
+        Cart Code: <span x-text="cartId"></span>
+      </div>
+    </div>
+
+    <div class="cart-item" x-show="cartTotal > 0">
+      <h2> Your cart</h2>
+      <div class="message" x-text="message">message here</div>
+      <div class="cart-item">
+        <table>
           <tr>
             <th>Flavour</th>
             <th>Size</th>
@@ -39,68 +41,65 @@
             <th>Qty</th>
             <th>Total</th>
           </tr>
-          
-            
-            <template x-for="pizza in cartPizzas">
-              <tr>
-                
-                  <td x-text="pizza.flavour" ></td>
-                  <td x-text="pizza.size" ></tdx-text></td>
-                  <td x-text="pizza.price" ></td>
-                  <td>
-                    <button x-on:click="addPizzaToCart(pizza.id)">+</button>
-                    x<span x-text="pizza.qty" ></span>
-                    <button x-on:click="removePizzaFromCart(pizza.id)">-</button>
-                  </td>
-                  <td x-text="pizza.total"></td>
-             
-              </tr>
-            </template>
-            </div>
-           
-          
+
+
+          <template x-for="pizza in cartPizzas">
             <tr>
-              <td colspan="3">Total</td>
-              <td colspan="2" style="text-align: right;">R<span x-text="cartTotal"></span></td>
+
+              <td x-text="pizza.flavour"></td>
+              <td x-text="pizza.size"></tdx-text></td>
+              <td x-text="pizza.price"></td>
+              <td>
+                <button x-on:click="addPizzaToCart(pizza.id)">+</button>
+                x<span x-text="pizza.qty"></span>
+                <button x-on:click="removePizzaFromCart(pizza.id)">-</button>
               </td>
+              <td x-text="pizza.total"></td>
+
             </tr>
+          </template>
+      </div>
 
-          <tr>
-            <td colspan="3">Pay Now</td>
-            <td>
-              <input x-model="paymentAmount" type="text">
-            </td>
-            <td><button x-on:click="payForCart()">Pay !</button></td>
-          </tr> 
-        </table>
-        </div>
+
+      <tr>
+        <td colspan="3">Total</td>
+        <td colspan="2" style="text-align: right;">R<span x-text="cartTotal"></span></td>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="3">Pay Now</td>
+        <td>
+          <input x-model="paymentAmount" type="text">
+        </td>
+        <td><button x-on:click="payForCart()">Pay !</button></td>
+      </tr>
+      </table>
     </div>
-  
+  </div>
 
-    <div class = "pizzas-container" x-show="username && cartId">
-      <h2>Pizzas</h2>
-      <template x-for="pizza in pizzas">
-        <div class="pizza-container">
-          <td><img src= "images/p2.png"></td>
-            <h5 x-text="pizza.flavour" ></h5>
-            <span x-text="pizza.size"></span>@
-            <strong>
-              R<span x-text="pizza.price"></span>
-            </strong>
-            <div>
-              <button class="btn" x-on:click="addPizzaToCart(pizza.id)">Add to cart </button>
-            
-            </div>
 
-          
+  <div class="pizzas-container" x-show="username && cartId">
+    <h2>Pizzas</h2>
+    <template x-for="pizza in pizzas">
+      <div class="pizza-container">
+        <td><img src="images/p2.png"></td>
+        <h5 x-text="pizza.flavour"></h5>
+        <span x-text="pizza.size"></span>@
+        <strong>
+          R<span x-text="pizza.price"></span>
+        </strong>
+        <div>
+          <button class="btn" x-on:click="addPizzaToCart(pizza.id)">Add to cart </button>
+
         </div>
-      </template>
-    
-    </div>
-    
+
+
+      </div>
+    </template>
+
+  </div>
+
 </body>
+
 </html>
-
-
-
-        

@@ -61,6 +61,21 @@ content-type: application/json
 
 {
 	"cart_code" : "q0F0PPP3bQ",
-	"amount" : 200
+	"amount" : 1000
 }
 
+### Get featured pizzas
+
+
+GET http://localhost:4009/api/pizzas/featured?username=njabuloy2k
+
+
+### SET featured pizzas
+
+POST http://localhost:4009/api/pizzas/featured
+content-type: application/json
+
+{
+	"username" : "njabuloy2k",
+	"pizza_id" : 8
+}
