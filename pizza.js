@@ -120,7 +120,7 @@ document.addEventListener("alpine:init", () => {
                             this.pizzas = result.data.pizzas
                         });
                 }
-
+                this.showCartData();
                 // if (!this.cartId) {
                 //     this
                 //         .createCart()
