@@ -28,7 +28,7 @@
         Cart Code: <span x-text="cartId"></span>
       </div>
     </div>
-
+    
     <div class="cart-item" x-show="cartTotal > 0">
       <h2> Your cart</h2>
       <div class="message" x-text="message">message here</div>
@@ -77,6 +77,56 @@
       </table>
     </div>
   </div>
+
+  <header>
+    <h1>Perfect Pizza</h1>
+    
+   <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Order Online</a></li>
+        </ul>
+        <p>Contact Us @011 565 3456 Y2knjabulo00@gmail.com. Home address Soweto, orlando</p>
+    </nav>
+    
+    
+</header>
+<main>
+
+    <section class="hero-image">
+        <h2>Welcome to Perfect Pizza</h2>
+        <p>Enjoy the taste of our delicious, freshly baked pizzas. Order online or visit us today!</p>
+    </section>
+    <section class="pizza menu">
+      
+        <h2>Feartured pizzas</h2>
+
+        <div class="pizzas">
+          <div class="pizza menu-itemsmall">
+            <td><img src="images/p2.png"></td>
+            <h3 style="font-size: 24px;">Chicken and Mushroom</h3>
+            <p>Large</p>
+              <span>@R104.99</span>
+            <button class="add-to-cart-btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
+        </div> 
+
+        <div class="pizza menu-itemmedium">
+            <td><img src="images/p2.png"></td>
+            <h3 style="font-size: 24px;">Regina</h3>
+            <p>Large</p>
+              <span>@R106.99</span>
+            <button class="add-to-cart-btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
+        </div>
+
+        <div class= "pizza menu-itemslarge">
+            <td><img src="images/p2.png"></td>
+            <h3 style="font-size: 24px;">3 Cheese</h3>
+            <p>Small</p>
+              <span>@R47.99</span>
+            <button class="add-to-cart-btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
+        </div>
+      </section>
 
 
   <div class="pizzas-container" x-show="username && cartId">
