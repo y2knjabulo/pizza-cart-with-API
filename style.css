@@ -11,6 +11,19 @@
   width: 10em;
   display: inline-block;
 }
+.footer {
+  margin: 0.5em;
+  padding: 1em;
+  border: 1px solid #268f0c;
+  border-radius: 2.5em;
+  margin-bottom: 1.5em;
+  background-color: #7e4d4d;
+  font-size: 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(117, 0, 98);
+  width: 30em;
+  display: inline-block;
+}
 
 
 

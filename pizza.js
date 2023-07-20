@@ -10,7 +10,7 @@ document.addEventListener("alpine:init", () => {
             paymentAmount: 0,
             message: "",
             FeaturedPizza: [],
-            orderHistory: [],
+            //orderHistory: [],
 
             login() {
                 if (this.username.length > 2) {
@@ -76,14 +76,14 @@ document.addEventListener("alpine:init", () => {
                     
              },
 
-             getHistoricalOrder(){
-                axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`)
-                .then(result => {
-                    const data = result.data
-                    this.orderHistory = data.pizzas;
-                    this.total = data.total;
-                });
-             },
+            //  getHistoricalOrder(){
+            //     axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`)
+            //     .then(result => {
+            //         const data = result.data
+            //         this.orderHistory = data.pizzas;
+            //         this.total = data.total;
+            //     });
+            //  },
 
 
             getCart() {
@@ -195,7 +195,7 @@ document.addEventListener("alpine:init", () => {
                             this.message = result.data.message;
                             setTimeout(() => this.message = "", 3000);
                         } else {
-                            this.message = "Payment received!";
+                            this.message = `Change is :${change.toFixed(2)}, Payment received!`;
                             this.cartPizzas = [];
                             this.cartTotal = 0
                             this.cartId = ''

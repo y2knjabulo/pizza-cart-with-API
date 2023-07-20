@@ -28,8 +28,8 @@
         Cart Code: <span x-text="cartId"></span>
       </div>
     </div>
-    
-    <div class="cart-item" x-show="username && cartId">
+
+    <div class="cart-item" x-show="cartTotal > 0">
       <h2> Your cart</h2>
       <div class="message" x-text="message">message here</div>
       <div class="cart-item">
@@ -80,70 +80,70 @@
 
   <header>
     <h1>Perfect Pizza</h1>
-    
-   <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Order Online</a></li>
-        </ul>
-        <p>Contact Us @011 565 3456 Y2knjabulo00@gmail.com. Home address Soweto, orlando</p>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Order Online</a></li>
+      </ul>
+      
     </nav>
-    
-    
-</header>
-<main>
+
+
+  </header>
+  <main>
 
     <section class="hero-image">
-        <h2>Welcome to Perfect Pizza</h2>
-        <p>Enjoy the taste of our delicious, freshly baked pizzas. Order online or visit us today!</p>
+      <h2>Welcome to Perfect Pizza</h2>
+      <p>Enjoy the taste of our delicious, freshly baked pizzas. Order online or visit us today!</p>
     </section>
 
 
-    
+
     <section class="pizza menu">
-      
-        <h2 style="font-size: 24px;">Feartured pizzas</h2>
-      
-        
-          <template x-for="featured in FeaturedPizza">
-            <div class="pizza menu-itemmedium">
-              <td><img src="images/p2.png" width="300"></td>
-            <span x-text="featured.flavour"></span>
-            <strong>
+
+      <h2 style="font-size: 24px;">Feartured pizzas</h2>
+
+
+      <template x-for="featured in FeaturedPizza">
+        <div class="pizza menu-itemmedium">
+          <td><img src="images/p2.png" width="300"></td>
+          <span x-text="featured.flavour"></span>
+          <strong>
             <span x-text="'R' + featured.price"></span>
           </strong>
-            <span x-text="featured.size"></span>
-            <div>
+          <span x-text="featured.size"></span>
+          <div>
             <button class="add-to-cart-btn" x-on:click="addPizzaToCart(featured.id)">Add to Cart</button>
           </div>
-        
-        </template>
-        </div>
+
+      </template>
+      </div>
+
+
+
+    </section>
+
+
+    <div class="pizzas-container" x-show="username && cartId">
+      <h2>Pizzas</h2>
+      <template x-for="pizza in pizzas">
+        <div class="pizza-container">
+          <td><img src="images/p2.png" width="300"></td>
+          <h5 x-text="pizza.flavour"></h5>
+          <span x-text="pizza.size"></span>@
+          <strong>
+            R<span x-text="pizza.price"></span>
+          </strong>
+          <div>
+            <button class="btn" x-on:click="addPizzaToCart(pizza.id)">Add to cart </button>
+
+          </div>
+
+          <!-- <h2 style="font-size: 24px;">Historical Orders</h2>
       
-  
-      
-      </section> 
-
-
-  <div class="pizzas-container" x-show="username && cartId">
-    <h2>Pizzas</h2>
-    <template x-for="pizza in pizzas">
-      <div class="pizza-container">
-        <td><img src="images/p2.png" width="300"></td>
-        <h5 x-text="pizza.flavour"></h5>
-        <span x-text="pizza.size"></span>@
-        <strong>
-          R<span x-text="pizza.price"></span>
-        </strong>
-        <div>
-          <button class="btn" x-on:click="addPizzaToCart(pizza.id)">Add to cart </button>
-
-        </div>
-
-        <h2 style="font-size: 24px;">Historical Orders</h2>
-      
-         <!-- <div class="pizza Orders"> 
+         <div class="pizza Orders"> 
           <template x-for="">
           
           
@@ -159,12 +159,26 @@
         
         </template>
         </div> -->
+      </template>
+    </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <h3>Contacts :</h3>
+        <p><i class="fa fa-phone" aria-hidden="true"> </i> Phone: 011 675 345</p>
+        <p></a><i class="fa fa-facebook-official" aria-hidden="true"> </i> Facebook</a></p>
+        <p><a><i class="fa fa-instagram" aria-hidden="true"> </i> Instagram</a></p>
+        <p><a><i class="fa fa-envelope" aria-hidden="true"> </i> pizzasam@pizzacart.com</a></p>
+      </div>
+      <!-- <div class="footer f2">
+        <h3><i class="fa fa-home" aria-hidden="true"> </i> ADDRESS :</h3>
+        <p>Contact Us @011 565 3456 Y2knjabulo00@gmail.com. Home address Soweto, orlando</p>
+      </div> -->
+    </footer>
 
 
-      
-    </template>
-  </div>
-  </div>
+
 
 </body>
 
