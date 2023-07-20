@@ -10,7 +10,7 @@ document.addEventListener("alpine:init", () => {
             paymentAmount: 0,
             message: "",
             FeaturedPizza: [],
-            //orderHistory: [],
+            orderHistory: [],
 
             login() {
                 if (this.username.length > 2) {
@@ -76,14 +76,29 @@ document.addEventListener("alpine:init", () => {
                     
              },
 
-            //  getHistoricalOrder(){
-            //     axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`)
-            //     .then(result => {
-            //         const data = result.data
-            //         this.orderHistory = data.pizzas;
-            //         this.total = data.total;
-            //     });
-            //  },
+             getHistoricalOrder(cartId){
+               return axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${cartId}/get`)
+                .then(result => {
+                    const data = result.data
+
+                    return data;
+                    // this.orderHistory = data.pizzas;
+                    // this.total = data.total;
+                });
+             },
+
+             fetchHistoricalOrder(){
+                axios.get('https://pizza-api.projectcodex.net/api/pizza-cart/username/njabuloy2k')
+                    .then (async result => {
+                        const data = result.data
+                        const carts = data.filter(cart => cart.status === 'paid')
+                        const history = carts.map(async cart => {
+                            return await this.getHistoricalOrder (cart.cart_code)
+                        })
+                        this.orderHistory = await Promise.all(history)
+                        this.total = data.total;     
+                    })
+             },
 
 
             getCart() {
@@ -138,6 +153,7 @@ document.addEventListener("alpine:init", () => {
             },
 
             init() {
+                this.fetchHistoricalOrder()
                 const storedUsername = localStorage["username"];
                 const storedCartID = localStorage["cartId"];
                 if (storedUsername && storedCartID) {
