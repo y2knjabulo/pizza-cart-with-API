@@ -47,7 +47,7 @@ content-type: application/json
 
 ### GET all the carts for a given user
 
-GET https://pizza-api.projectcodex.net/api/pizza-cart/username/Andrew
+GET https://pizza-api.projectcodex.net/api/pizza-cart/username/njabuloy2k
 
 ### GET all the active carts for a user
 
@@ -77,5 +77,5 @@ content-type: application/json
 
 {
 	"username" : "njabuloy2k",
-	"pizza_id" : 7
+	"pizza_id" : 8
 }

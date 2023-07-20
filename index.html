@@ -98,35 +98,32 @@
         <h2>Welcome to Perfect Pizza</h2>
         <p>Enjoy the taste of our delicious, freshly baked pizzas. Order online or visit us today!</p>
     </section>
+
+
+    
     <section class="pizza menu">
       
-        <h2>Feartured pizzas</h2>
-
-        <div class="pizzas">
-          <div class="pizza menu-itemsmall">
-            <td><img src="images/p2.png"></td>
-            <h3 style="font-size: 24px;">Chicken and Mushroom</h3>
-            <p>Large</p>
-              <span>@R104.99</span>
-            <button class="add-to-cart-btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
-        </div> 
-
-        <div class="pizza menu-itemmedium">
-            <td><img src="images/p2.png"></td>
-            <h3 style="font-size: 24px;">Regina</h3>
-            <p>Large</p>
-              <span>@R106.99</span>
-            <button class="add-to-cart-btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
+        <h2 style="font-size: 24px;">Feartured pizzas</h2>
+      
+        
+          <template x-for="featured in FeaturedPizza">
+            <div class="pizza menu-itemmedium">
+              <td><img src="images/p2.png" width="300"></td>
+            <span x-text="featured.flavour"></span>
+            <strong>
+            <span x-text="'R' + featured.price"></span>
+          </strong>
+            <span x-text="featured.size"></span>
+            <div>
+            <button class="add-to-cart-btn" x-on:click="addPizzaToCart(featured.id)">Add to Cart</button>
+          </div>
+        
+        </template>
         </div>
-
-        <div class= "pizza menu-itemslarge">
-            <td><img src="images/p2.png"></td>
-            <h3 style="font-size: 24px;">3 Cheese</h3>
-            <p>Small</p>
-              <span>@R47.99</span>
-            <button class="add-to-cart-btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
-        </div>
-      </section>
+      
+  
+      
+      </section> 
 
 
   <div class="pizzas-container" x-show="username && cartId">
@@ -144,10 +141,29 @@
 
         </div>
 
+        <h2 style="font-size: 24px;">Historical Orders</h2>
+      
+         <!-- <div class="pizza Orders"> 
+          <template x-for="">
+          
+          
+              
+            <span x-text=".flavour"></span>
+            <strong>
+            <span x-text=".price"></span>
+          </strong>
+            <span x-text=".size"></span>
+            <div>
+             Username: <input type="text" x-model="username">
+          </div>
+        
+        </template>
+        </div> -->
 
-      </div>
+
+      
     </template>
-
+  </div>
   </div>
 
 </body>

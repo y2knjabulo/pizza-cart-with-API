@@ -9,6 +9,8 @@ document.addEventListener("alpine:init", () => {
             cartTotal: 0.00,
             paymentAmount: 0,
             message: "",
+            FeaturedPizza: [],
+            orderHistory: [],
 
             login() {
                 if (this.username.length > 2) {
@@ -55,6 +57,34 @@ document.addEventListener("alpine:init", () => {
                 }
 
             },
+             setFeaturedPizza(){
+                axios.post('https://pizza-api.projectcodex.net/api/pizzas/featured?username=njabuloy2k', {
+                    username : "njabuloy2k",
+                    pizza_id : pizzaId
+                }).then(()=> this.addFeaturedPizza())
+                    
+             },
+            
+             addFeaturedPizza(){
+                axios.get('https://pizza-api.projectcodex.net/api/pizzas/featured?username=njabuloy2k')
+                    .then (result => {
+                        console.log(result.data)
+                        this.FeaturedPizza = result.data.pizzas
+                        
+                    })
+                
+                    
+             },
+
+             getHistoricalOrder(){
+                axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`)
+                .then(result => {
+                    const data = result.data
+                    this.orderHistory = data.pizzas;
+                    this.total = data.total;
+                });
+             },
+
 
             getCart() {
                 const getCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`
@@ -121,6 +151,7 @@ document.addEventListener("alpine:init", () => {
                         });
                 }
                 this.showCartData();
+                this.addFeaturedPizza();
                 // if (!this.cartId) {
                 //     this
                 //         .createCart()
