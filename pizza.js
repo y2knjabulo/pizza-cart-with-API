@@ -76,29 +76,29 @@ document.addEventListener("alpine:init", () => {
                     
              },
 
-             getHistoricalOrder(cartId){
-               return axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${cartId}/get`)
-                .then(result => {
-                    const data = result.data
+            //  getHistoricalOrder(cartId){
+            //    return axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/${cartId}/get`)
+            //     .then(result => {
+            //         const data = result.data
 
-                    return data;
-                    // this.orderHistory = data.pizzas;
-                    // this.total = data.total;
-                });
-             },
+            //         return data;
+            //         // this.orderHistory = data.pizzas;
+            //         // this.total = data.total;
+            //     });
+            //  },
 
-             fetchHistoricalOrder(){
-                axios.get('https://pizza-api.projectcodex.net/api/pizza-cart/username/njabuloy2k')
-                    .then (async result => {
-                        const data = result.data
-                        const carts = data.filter(cart => cart.status === 'paid')
-                        const history = carts.map(async cart => {
-                            return await this.getHistoricalOrder (cart.cart_code)
-                        })
-                        this.orderHistory = await Promise.all(history)
-                        this.total = data.total;     
-                    })
-             },
+            //  fetchHistoricalOrder(){
+            //     axios.get('https://pizza-api.projectcodex.net/api/pizza-cart/username/njabuloy2k')
+            //         .then (async result => {
+            //             const data = result.data
+            //             const carts = data.filter(cart => cart.status === 'paid')
+            //             const history = carts.map(async cart => {
+            //                 return await this.getHistoricalOrder (cart.cart_code)
+            //             })
+            //             this.orderHistory = await Promise.all(history)
+            //             this.total = data.total;     
+            //         })
+            //  },
 
 
             getCart() {
@@ -153,7 +153,7 @@ document.addEventListener("alpine:init", () => {
             },
 
             init() {
-                this.fetchHistoricalOrder()
+               // this.fetchHistoricalOrder()
                 const storedUsername = localStorage["username"];
                 const storedCartID = localStorage["cartId"];
                 if (storedUsername && storedCartID) {
@@ -206,12 +206,12 @@ document.addEventListener("alpine:init", () => {
                 this
                     .pay(this.paymentAmount)
                     .then(result => {
-                        console.log(result.data.status)
+                        //console.log(result.data.status)
                         if (result.data.status === "failure") {
                             this.message = result.data.message;
                             setTimeout(() => this.message = "", 3000);
                         } else {
-                            this.message = `Change is :${change.toFixed(2)}, Payment received!`;
+                            this.message = "Payment received!";
                             this.cartPizzas = [];
                             this.cartTotal = 0
                             this.cartId = ''
